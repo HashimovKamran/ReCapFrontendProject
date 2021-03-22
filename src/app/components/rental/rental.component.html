@@ -1,0 +1,27 @@
+<div *ngIf="dataLoaded==false" class="lds-dual-ring">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<table *ngIf="dataLoaded==true" class="table table-info table-striped">
+    <thead class="class">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Marka</th>
+        <th scope="col">Model</th>
+        <th scope="col">Şirket Adı</th>
+        <th scope="col">Müşteri Adı</th>
+        <th scope="col">Kiralama Tarihi</th>
+        <th scope="col">Teslim Tarihi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rental of rentals">
+        <td>{{rental.id}}</td>
+        <td>{{rental.brandName}}</td>
+        <td>{{rental.carName}}</td>
+        <td>{{rental.customerName}}</td>
+        <td>{{rental.userName}}</td>
+        <td>{{rental.rentDate}}</td>
+        <td>{{rental.returnDate || "Kirada"}}</td>
+      </tr>
+    </tbody>
+</table>
