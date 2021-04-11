@@ -11,17 +11,22 @@
       <th scope="col">Model Yılı</th>
       <th scope="col">Günlük Fiyat</th>
       <th scope="col">Tanımlama</th>
+      <th scope="col">Detay</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let car of cars">
+    <tr *ngFor="let car of cars" 
+    (click)="setCurrentCar(car)"
+    routerLink = "/cars/details/{{car.id}}"
+    [class]="getCarClass(car)">
       <td>{{car.id}}</td>
-      <td>{{car.brandName}}</td>
-      <td>{{car.carName}}</td>
-      <td>{{car.colorName}}</td>
+      <td>{{car.brandName || car.brandId}}</td>
+      <td>{{car.carName || "---"}}</td>
+      <td>{{car.colorName || car.colorId}}</td>
       <td>{{car.modelYear}}</td>
       <td>{{car.dailyPrice}}</td>
       <td>{{car.description || "---"}}</td>
+      <td><button type="button" class="btn btn-success">Detay</button></td>
     </tr>
   </tbody>
 </table>

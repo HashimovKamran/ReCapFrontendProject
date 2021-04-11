@@ -2,7 +2,7 @@
     <span class="visually-hidden">Loading...</span>
 </div>
 <ul *ngIf="dataLoaded==true" class="list-group">
-    <li class="list-group-item active" aria-current="true">Tüm Markalar</li>
+    <li [class]="getAllBrandClass()" routerLink="/cars" class="list-group-item active" aria-current="true">Tüm Markalar</li>
     <li (click)="setCurrentBrand(brand)" 
     routerLink="/cars/brand/{{brand.brandId}}"
     *ngFor="let brand of brands" 

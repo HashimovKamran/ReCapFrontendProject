@@ -1,0 +1,77 @@
+<div class="card rounded-0 mt-4">
+  <div class="card-header text-center rounded-0 mt-4">
+    <div class="card-body">
+      <div
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div
+          class="carousel-inner d-flex"
+          style="height: 50vh; min-height: 20rem; max-height: 30rem"
+        >
+          <div
+            *ngFor="let image of images; index as i; first as firstImage"
+            class="carousel-item align-self-center"
+            [ngClass]="{ active: firstImage }"
+            style="height: 100%; width: 100%"
+          >
+            <img
+              src="https://localhost:44323{{ image.imagePath }}"
+              class=""
+              style="height: 100%; width: 100%; object-fit: contain"
+              alt="imageUrl + image.imagePath"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<table class="table table-info table-striped">
+  <thead class="class">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Marka</th>
+      <th scope="col">Model</th>
+      <th scope="col">Renk</th>
+      <th scope="col">Model Yılı</th>
+      <th scope="col">Günlük Fiyat</th>
+      <th scope="col">Tanımlama</th>
+      <th scope="col">Detay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of cars" 
+    (click)="setCurrentCar(car)"
+    routerLink = "/cars/details/{{car.id}}"
+    [class]="getCarClass(car)">
+      <td>{{car.id}}</td>
+      <td>{{car.brandName || car.brandId}}</td>
+      <td>{{car.carName || "---"}}</td>
+      <td>{{car.colorName || car.colorId}}</td>
+      <td>{{car.modelYear}}</td>
+      <td>{{car.dailyPrice}}</td>
+      <td>{{car.description || "---"}}</td>
+      <td><button type="button" class="btn btn-success">Detay</button></td>
+    </tr>
+  </tbody>
+</table>
